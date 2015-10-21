@@ -1,6 +1,10 @@
 package
 {
 	import net.flashpunk.World;
+	import net.flashpunk.FP;
+	import ui.Button;
+	import net.flashpunk.graphics.Text;
+	
 	public class MenuWorld extends World
 	{
 		
@@ -12,21 +16,22 @@ package
 		override public function begin():void
 		{
 			super.begin();
-			trace("inside the gameworld");
+			trace("inside the gameworld. Menu: " + FP.halfWidth + " image: " + Assets.titleImage.width);
 			
-			//add buttons here
-			//info for adding buttons: button text, button type, button.x, button.y
+			// Render 2 textboxes, subtitle first since I'd like the main title to be drawn over it
+			var subtitle:Text = new Text("Fetisch Sim-U-L8R", 0, 76, { size: 32, color: 0xDEADBEEF, wordWrap: true, width:FP.width, align: "left", font:"comicSansBold" } );
+			addGraphic(subtitle);
+			subtitle.x = FP.halfWidth - (subtitle.textWidth / 2) - 69;
 			
-			add(new GUIImage(Assets.titleImage, 20, 20));
+			// Main title
+			var title:Text = new Text("Tails of Magana", 0, 0, { size: 72, color: 0x000EFF, wordWrap: true, width:FP.width, align: "left", font:"comicSansBold" } );
+			addGraphic(title);
+			title.x = FP.halfWidth - (title.textWidth / 2);
 			
-			GV.PARTICLE_EMITTER = new Particles;
-			add(GV.PARTICLE_EMITTER);
-			
-			add(new GUIButton("New Game", 1, 100, 100));
-			
-			add(new GUIButton("Load Game", 2, 100, 150));
-			
-			add(new GUIButton("Save Game", 3, 100,200));
+			// A sample of how a button can work. Callbacks are important
+			add(new Button(title.x + 69 / 2, subtitle.y + 69, "New Game", Callbacks.newGame));
+			add(new Button(title.x + 69 / 2, subtitle.y + 132, "Test Zone", Callbacks.testZoneButton));
 		}
+		
 	}
 }
