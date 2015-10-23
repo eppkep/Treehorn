@@ -42,7 +42,7 @@ package ui
 			
 			// Draw the button text 32 + 5 pixels of padding to the right of the origin
 			// as of now there's a little bit of extra whitespace above the text since i haven't set the height option - swabs
-			label = new Text(text, 37, 0, { size: 22, color: 0xFFFFFF, wordWrap: true, width:"auto", align: "left", font:"comicSansBold"} );
+			label = new Text(text, 37, 0, { size: 22, color: 0xFFFFFF, wordWrap: true, width:"auto", align: "left", font:"comicSansBold", resizable:true} );
 			
 			// Default state
 			graphic = normal;

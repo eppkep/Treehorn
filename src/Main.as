@@ -14,6 +14,7 @@ import net.flashpunk.FP;
 		{
 			// Engine vars: width, height, framerate, fixed framerate boolean
 			super(1280, 720, 60, false);
+			FP.screen.color = 0xcccccc;
 			// Adding a world to play with:
 			FP.world = new MenuWorld;
 		}
